@@ -1,0 +1,42 @@
+---
+title: "Panel Data"
+author: "Akira MATSUI"
+date: "Mar-22-2017"
+output: pdf_document
+---
+
+
+In this quize, we will conduct panel data analysis by using `plm` package and its data set.
+
+
+# Excersise
+
+- install library `plm`
+- Use the built in data set on `plm` package, `Gasoline`
+- conduct Panel a apnel data analysis (pooling and within)
+
+Here is the regression formula.
+
+```{r}
+form <- lgaspcar ~ lincomep + lrpmg + lcarpcap
+```
+
+
+# Sample Answer
+
+If you do not have `plm` package, you need to install it.
+
+```{r}
+library(plm)
+data("Gasoline", package = "plm")
+form <- lgaspcar ~ lincomep + lrpmg + lcarpcap
+gasw <-  plm(form, data = Gasoline, model = "within")
+gasp <-  plm(form, data = Gasoline, model = "pooling")
+summary(gasw)
+summary(gasp)
+```
+
+
+
+
+
